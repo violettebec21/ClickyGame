@@ -1,0 +1,12 @@
+.navbar-li {
+  display: inline-block;
+  text-align: center;
+}
+
+.nav-item {
+  width: 33%;
+}
+
+.navbar {
+  background: #490549;
+}
