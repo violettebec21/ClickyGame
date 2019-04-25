@@ -1,22 +1,12 @@
-.navbar-li {
-  display: inline-block;
-  text-align: center;
+.footer{
+  background-image: url(https://i.imgur.com/qtZ7F1M.png)
+	width: 100%;
+	position: relative;
 }
 
-.nav-item {
-  width: 33%;
-}
-
-.navbar {
-  background: #490549;
-  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
-}
-
-li {
-  color: white;
-  padding: 15px 0;
-}
-
-body {
-  font-size: 24px;
+.text-center {
+	color: black;
+	text-align: center;
+	padding: 10px 0;
+	font-size: 15px;
 }

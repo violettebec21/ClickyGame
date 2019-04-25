@@ -1,6 +1,8 @@
 .navbar-li {
   display: inline-block;
   text-align: center;
+    padding: 26px 0;
+    width: 33.3%;
 }
 
 .nav-item {
@@ -10,3 +12,4 @@
 .navbar {
   background: #490549;
 }
+

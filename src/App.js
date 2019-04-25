@@ -14,7 +14,14 @@ class App extends Component {
 
   removeFriend = id => {
     // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter(friend => friend.id !== id);
+    const friends = this.state.friends.filter(friend => {
+      //for each friend, check IF the friend.id is equal to the id being passed in from our click
+      if (friend.id !== id){
+        return true;
+      } else {
+        return false;
+      }
+    })
     // Set this.state.friends equal to the new friends array
     this.setState({ friends });
   };
@@ -23,11 +30,15 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-      <Wrapper>
       <NavBar />
       <TitleJumbotron>Clicky Game</TitleJumbotron>
+      <Wrapper>
                 {this.state.friends.map(friend => (
+            //key is used as a unique id so that React can keep track of what has already rendered vs not
           <FriendCard
+          //removeFriend is the name of the PROP 
+          //in the component/file FriendCard, going to refer to THIS PROP as prop.removeFriend
+          //to left of the = is the NAME of the prop, to the right of the = is the VALUE of the prop
             removeFriend={this.removeFriend}
             id={friend.id}
             key={friend.id}
@@ -37,8 +48,8 @@ class App extends Component {
             location={friend.location}
           />
         ))}
-        <Footer />
       </Wrapper>
+      <Footer />
       </div>
     );
   }
