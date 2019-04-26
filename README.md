@@ -1,4 +1,4 @@
-# ClickyGame React App
+# Spongebob Memory Game React App
 
 ### :tv: **Deployed App**
 https://becclicky.herokuapp.com/
