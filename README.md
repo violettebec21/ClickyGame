@@ -1,11 +1,11 @@
-# ClickyGame
+# ClickyGame React App
 
-1. Create a new React application using [Create React App](https://github.com/facebookincubator/create-react-app).
+### :tv: **Deployed App**
+https://becclicky.herokuapp.com/
 
-2. The application should render different images (of your choice) to the screen. Each image should listen for click events.
+### Overview
 
-3. The application should keep track of the user's score. The user's score should be incremented when clicking an image for the first time. The user's score should be reset to 0 if they click the same image more than once.
+For this project, I created a new React application using [Create React App](https://github.com/facebookincubator/create-react-app). The application renders different images to the screen, and every time an image is clicked, the images rendered to the page shuffle themselves in a random order. The application keeps track of the user's score and the user's score increments when clicking an image for the first time; the user's resets to 0 if they click the same image more than once.
+   
+------------------------------------------------
 
-4. Every time an image is clicked, the images rendered to the page should shuffle themselves in a random order.
-
-5. Once the user's score is reset after an incorrect guess, the game should restart.
