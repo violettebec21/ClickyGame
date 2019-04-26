@@ -7,9 +7,10 @@ import TitleJumbotron from "./components/TitleJumbotron";
 import friends from "./friends.json";
 
 class App extends Component {
-  // Setting this.state.friends to the friends json array
+  // Setting this.state.friends to the friends json array, set initial score to 0 as base
   state = {
-    friends
+    friends,
+    score: 0
   };
 
   removeFriend = id => {
@@ -30,10 +31,11 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-      <NavBar />
-      <TitleJumbotron>Clicky Game</TitleJumbotron>
+      {/* insert start game function  */}
+      <NavBar score={this.state.score}/>
+      <TitleJumbotron>Spongebob Memory Game</TitleJumbotron>
       <Wrapper>
-                {this.state.friends.map(friend => (
+            {this.state.friends.map(friend => (
             //key is used as a unique id so that React can keep track of what has already rendered vs not
           <FriendCard
           //removeFriend is the name of the PROP 
