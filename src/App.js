@@ -13,18 +13,59 @@ class App extends Component {
     score: 0
   };
 
-  removeFriend = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter(friend => {
-      //for each friend, check IF the friend.id is equal to the id being passed in from our click
-      if (friend.id !== id){
-        return true;
-      } else {
-        return false;
+  userLoses(){
+    console.log("YOU LOSE");
+    this.setState({
+      score: 0, 
+      friends
+    })
+  }
+
+  handleScore(){
+    console.log("FIRING");
+    this.setState(state => {
+      return {
+        //grabbing old state, getting the old score (from the state), resetting score IN the state object 
+        //setState will only change the piece that we tell it to, returning new object so NOT mutating the state
+        score: state.score + 1
       }
     })
+  }
+
+  shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+
+  removeFriend = id => {
+    let didLose;
+    // const clone = [...this.state.friends];
+    const cloned = JSON.parse(JSON.stringify(this.state.friends));
+    // Filter this.state.friends for friends with an id not equal to the id being removed
+    const friends = cloned.map(friend => {
+      //friend is our object
+      //for each friend, check IF the friend.id is equal to the id being passed in from our click
+      if (friend.id == id){
+        //NEW IF
+        if (friend.alreadyClicked){
+          didLose = true;
+          this.userLoses()
+        }
+          else {
+            //set friend to already clicked to keep track 
+            friend.alreadyClicked = true;
+            this.handleScore(); 
+          }
+      }
+      //returning friend object the same as before or altered due to .map method
+      return friend;
+    })
     // Set this.state.friends equal to the new friends array
-    this.setState({ friends });
+    if (!didLose) this.setState({ friends: this.shuffle(friends) });
   };
 
   // Map over this.state.friends and render a FriendCard component for each friend object
