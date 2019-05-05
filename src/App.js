@@ -10,14 +10,16 @@ class App extends Component {
   // Setting this.state.friends to the friends json array, set initial score to 0 as base
   state = {
     friends,
-    score: 0
+    score: 0,
+    highScore: 0
   };
 
   userLoses(){
     console.log("YOU LOSE");
     this.setState({
-      score: 0, 
-      friends
+      friends,
+      score: 0,
+      highScore: 0
     })
   }
 
@@ -30,7 +32,10 @@ class App extends Component {
         score: state.score + 1
       }
     })
+    if (this.state.score > this.state.highScore) {
+      this.setState({ highScore: this.state.score })
   }
+}
 
   shuffle(a) {
     for (let i = a.length - 1; i > 0; i--) {
@@ -49,7 +54,7 @@ class App extends Component {
     const friends = cloned.map(friend => {
       //friend is our object
       //for each friend, check IF the friend.id is equal to the id being passed in from our click
-      if (friend.id == id){
+      if (friend.id === id){
         //NEW IF
         if (friend.alreadyClicked){
           didLose = true;
@@ -73,7 +78,7 @@ class App extends Component {
     return (
       <div className="container">
       {/* insert start game function  */}
-      <NavBar score={this.state.score}/>
+      <NavBar score={this.state.score} highScore={this.state.highScore}/>
       <TitleJumbotron>Spongebob Memory Game</TitleJumbotron>
       <Wrapper>
             {this.state.friends.map(friend => (
